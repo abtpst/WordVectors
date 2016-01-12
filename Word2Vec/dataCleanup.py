@@ -6,12 +6,12 @@ from gensim.models import word2vec
 
 if __name__ == '__main__':
     
-    # Read labeled trining data
+    # Read labelled training data
     
     train = pd.read_csv("../../data/labeledTrainData.tsv",
                     header=0, delimiter="\t", quoting=3)
     
-    # Read unlabeled trining data
+    # Read unlabelled training data
     
     unlabeled_train = pd.read_csv("../../data/unlabeledTrainData.tsv",
                     header=0, delimiter="\t", quoting=3)
@@ -80,11 +80,10 @@ def review_to_words(rawReview, removeStopwords=False, removeNumbers=False, remov
     # [^] matches a single character that is not contained within the brackets
     # re.sub() replaces the pattern by the desired character/string
     
+	# Check to see how we need to perform cleanup
     if removeNumbers and removeSmileys:
-        # any character that is not in a to z and A to Z (non text)
         reviewText = re.sub("[^a-zA-Z]", " ", reviewText)
     elif removeSmileys:
-         # numbers are also included
         reviewText = re.sub("[^a-zA-Z0-9]", " ", reviewText)
     elif removeNumbers:
         reviewText = re.sub("[^a-zA-Z" + smiley_pattern + "]", " ", reviewText)
