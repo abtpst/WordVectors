@@ -1,45 +1,11 @@
-import pandas as pd
-import json
-import utilities.preProc as preProc 
-import nltk.data
-from gensim.models import word2vec
+'''
+Created on Jul 15, 2016
 
-if __name__ == '__main__':
-    
-    # Read labelled training data
-    
-    train = pd.read_csv("../../data/labeledTrainData.tsv",
-                    header=0, delimiter="\t", quoting=3)
-    
-    # Read unlabelled training data
-    
-    unlabeled_train = pd.read_csv("../../data/unlabeledTrainData.tsv",
-                    header=0, delimiter="\t", quoting=3)
-    
-    # Load a tokenizer from nltk
-    
-    tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-
-    # Initialize list for holding cleaned up sentences
-    
-    bagOfsentences = []
-    
-    # Parse labeled sentences and append to bagOfsentences
-    
-    print("Parsing sentences from labeled training set")
-    for review in train["review"]:
-        bagOfsentences.append(preProc.review_to_sentences(review, tokenizer, False, True, False))
-    
-    # Parse unlabeled sentences and append to bagOfsentences
-    
-    print("Parsing sentences from unlabeled set")
-    for review in unlabeled_train["review"]:
-        bagOfsentences.append(preProc.review_to_sentences(review, tokenizer, False, True, False))
-    
-    # Save bagOfsentences
-    
-    json.dump(bagOfsentences,open("../../classifier/bagOfsentences.json", "a"))
-
+@author: atomar
+'''
+import re
+from bs4 import BeautifulSoup
+from nltk.corpus import stopwords
 # Here is the function review_to_sentences 
 
 def review_to_sentences(review, tokenizer, sentiment="",removeStopwords=False, removeNumbers=False, removeSmileys=False):
@@ -80,7 +46,7 @@ def review_to_words(rawReview, removeStopwords=False, removeNumbers=False, remov
     # [^] matches a single character that is not contained within the brackets
     # re.sub() replaces the pattern by the desired character/string
     
-	# Check to see how we need to perform cleanup
+    # Check to see how we need to perform cleanup
     if removeNumbers and removeSmileys:
         reviewText = re.sub("[^a-zA-Z]", " ", reviewText)
     elif removeSmileys:
