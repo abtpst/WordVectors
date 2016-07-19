@@ -5,9 +5,9 @@ Repo for exploring Word2Vec and Doc2Vec
 
 #### 1. Install Anaconda
 
-We will be using python 3 with Anaconda. Download the windows installer from
+We will be using python 3.5 with Anaconda. Download the installer from
 
-http://repo.continuum.io/archive/Anaconda3-4.1.1-Windows-x86_64.exe
+https://www.continuum.io/downloads
 
 and follow installation instructions
 
