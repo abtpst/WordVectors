@@ -32,3 +32,8 @@ If you experience trouble installing `scipy` or `numpy`, follow these steps. Not
 
 1. `conda install scipy`
 2. `pip install -r requirements.txt`
+
+#### 5. Tie this virtual environment to the project
+The python interpreter for this project should point to the conda virtual environment we created above. Note that we can use this environment for `doc2vec` as well.
+
+#### 6. Now you are ready to run the scripts

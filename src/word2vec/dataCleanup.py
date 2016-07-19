@@ -39,4 +39,4 @@ if __name__ == '__main__':
     
     # Save bagOfsentences
     
-    json.dump(bagOfsentences,open("././classifier/bagOfsentences.json", "a"))
+    json.dump(bagOfsentences,open("././classifier/bagOfsentences.json", "w"))
