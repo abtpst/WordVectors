@@ -33,9 +33,18 @@ If you experience trouble installing `scipy` or `numpy`, follow these steps. Not
 1. `conda install scipy`
 2. `pip install -r requirements.txt`
 
-#### 5. Tie this virtual environment to the project
+#### 5. Bug fix for gensim 
+
+In the versions of gensim, post 0.10.1, you need to make the following change
+
+Modify the file `site-packages/gensim/models/word2vec.py` by changing line `1013` to 
+
+    self.syn0[i] = self.seeded_vector(str(self.index2word[i]) + str(self.seed))
+This fix is important as otherwise the word2vec training would fail.
+
+#### 6. Tie this virtual environment to the project
 The python interpreter for this project should point to the conda virtual environment we created above. Note that we can use this environment for `doc2vec` as well.
 
-#### 6. Now you are ready to run the scripts
+#### 7. Now you are ready to run the scripts
 
 The `src` folder contains the packages for exploring `Word2Vec` and `Doc2Vec`. The respective Readme files with instructions are also provided.

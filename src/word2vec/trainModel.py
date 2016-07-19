@@ -26,7 +26,7 @@ print("Training model...")
 
 model = word2vec.Word2Vec(bagOfsentences, workers=num_workers,
                           size=num_features, min_count=min_word_count,
-                          window=context, sample=downsampling)
+                          window=context, sample=downsampling,hashfxn=myhash)
 						  
 '''
 python 2.x declaration would be 
@@ -43,6 +43,6 @@ model.init_sims(replace=True)
     
 # save the model for later use
 # for loading, call Word2Vec.load()
-   
+
 model.save(open("../../classifier/Word2VectforNLPTraining","wb"))
     

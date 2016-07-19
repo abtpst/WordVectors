@@ -2,7 +2,7 @@ beautifulsoup4==4.4.1
 boto==2.39.0
 bs4==0.0.1
 bz2file==0.98
-gensim==0.10.2
+gensim==0.13.1
 httpretty==0.8.10
 nltk==3.2.1
 numpy==1.11.0
