@@ -26,10 +26,10 @@ def labelizeReviews(reviewSet,labelType):
         return labelized
 
 #Load cleaned up labeled reviews   
-labeled = json.load(open("../../classifier/doc2vec/labeledSentiFFF.json", "r"))
+labeled = json.load(open("../../data/labeledSentiFFF.json", "r"))
 
 #Load cleaned up unlabeled reviews
-unlabeled = json.load(open("../../classifier/doc2vec/unlabeledFFF.json", "r"))
+unlabeled = json.load(open("../../data/unlabeledFFF.json", "r"))
 
 #Tag the cleaned labeled reviews   
 labeled = labelizeReviews(labeled, 'LABELED')
@@ -41,4 +41,4 @@ unlabeled = labelizeReviews(unlabeled, 'UNLABELED')
 bagTaggedDocs = labeled + unlabeled
 
 #Save tagged reviews
-pickle.dump(bagTaggedDocs,open("../../classifier/doc2vec/taggedDocs.pickle", "wb"))
+pickle.dump(bagTaggedDocs,open("../../classifier/taggedDocs.pickle", "wb"))

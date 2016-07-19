@@ -14,20 +14,23 @@ import time
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 #Load tagged cleaned up reviews
-bagTaggedDocs = pickle.load(open("../../classifier/doc2vec/taggedDocs.pickle","rb"))
+bagTaggedDocs = pickle.load(open("../../classifier/taggedDocs.pickle","rb"))
 
 # parameter values
 num_features = 300 #number of features/columns for the term-document matrix.
+'''
+minimum word count: any word that does not occur at least this many times
+across all documents is ignored
+'''
+min_word_count = 40 
 
-min_word_count = 40 ''' minimum word count: any word that does not occur at least this many times
- 			across all documents is ignored
-			'''
 context = 10 # Context window size. The paper (http://arxiv.org/pdf/1405.4053v2.pdf) suggests 10 is the optimal
-
-downsampling = 1e-3 ''' threshold for configuring which higher-frequency words are randomly downsampled;
-			default is 0 (off), useful value is 1e-5
-			set the same as word2vec
-			'''
+'''
+threshold for configuring which higher-frequency words are randomly downsampled;
+default is 0 (off), useful value is 1e-5
+set the same as word2vec
+'''
+downsampling = 1e-3 
 
 num_workers = 4  # Number of threads to run in parallel
 
@@ -55,7 +58,7 @@ model.build_vocab(bagTaggedDocs)
 
 # If you don't plan to train the model any further, calling
 # init_sims will make the model much more memory-efficient
-model.init_sims(replace=True)
+model.init_sims(replace=False)
 
 #Train the model for 10 epochs
 for epoch in range(1,10):
@@ -72,4 +75,4 @@ for epoch in range(1,10):
     print("Epoch ",epoch," took %s minutes " % ((time.time() - start_time)/60))
 
 #Save the trained model	
-model.save("../../classifier/doc2vec/Doc2VecTaggedDocs")
+model.save("../../classifier/Doc2VecTaggedDocs")
