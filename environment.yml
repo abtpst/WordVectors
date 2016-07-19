@@ -1,4 +1,4 @@
-name: <>
+name: C:\Users\atomar\AppData\Local\Continuum\Anaconda35\envs\gensim35
 dependencies:
 - mkl=11.3.3=1
 - numpy=1.11.1=py35_0
@@ -13,7 +13,7 @@ dependencies:
   - boto==2.39.0
   - bs4==0.0.1
   - bz2file==0.98
-  - gensim==0.13.1
+  - gensim==0.10.2
   - httpretty==0.8.10
   - nltk==3.2.1
   - pandas==0.18.0

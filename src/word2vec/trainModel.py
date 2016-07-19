@@ -2,7 +2,7 @@ import logging
 import json
 from gensim.models import word2vec
 
-bagOfsentences = json.load(open("../../classifier/bagOfsentences.json","r"))
+bagOfsentences = json.load(open("../../data/bagOfsentences.json","r"))
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', \
         level=logging.INFO)
@@ -26,8 +26,7 @@ print("Training model...")
 
 model = word2vec.Word2Vec(bagOfsentences, workers=num_workers,
                           size=num_features, min_count=min_word_count,
-                          window=context, sample=downsampling,
-                          hashfxn=myhash)
+                          window=context, sample=downsampling)
 						  
 '''
 python 2.x declaration would be 

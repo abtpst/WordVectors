@@ -4,3 +4,4 @@
 classifier/*
 submits/*
 __pycache__
+data/*
