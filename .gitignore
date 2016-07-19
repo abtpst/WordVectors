@@ -3,3 +3,4 @@
 .pydevproject
 classifier/*
 submits/*
+__pycache__

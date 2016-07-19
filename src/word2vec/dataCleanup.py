@@ -27,16 +27,16 @@ if __name__ == '__main__':
     
     print("Parsing sentences from labeled training set")
     for review in train["review"]:
-        review = review.decode("utf8","ignore")
+        #review = review.decode("utf8","ignore")
         bagOfsentences.append(preProc.review_to_sentences(review, tokenizer, False, True, False))
     
     # Parse unlabeled sentences and append to bagOfsentences
     
     print("Parsing sentences from unlabeled set")
     for review in unlabeled_train["review"]:
-        review = review.decode("utf8","ignore")
+        #review = review.decode("utf8","ignore")
         bagOfsentences.append(preProc.review_to_sentences(review, tokenizer, False, True, False))
     
     # Save bagOfsentences
     
-    json.dump(bagOfsentences,open("../../classifier/bagOfsentences.json", "a"))
+    json.dump(bagOfsentences,open("././classifier/bagOfsentences.json", "a"))
