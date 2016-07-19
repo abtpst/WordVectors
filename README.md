@@ -37,3 +37,5 @@ If you experience trouble installing `scipy` or `numpy`, follow these steps. Not
 The python interpreter for this project should point to the conda virtual environment we created above. Note that we can use this environment for `doc2vec` as well.
 
 #### 6. Now you are ready to run the scripts
+
+The `src` folder contains the packages for exploring `Word2Vec` and `Doc2Vec`. The respective Readme files with instructions are also provided.
