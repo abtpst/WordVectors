@@ -10,13 +10,7 @@ The labeled data set consists of 50,000 IMDB movie reviews, specially selected f
 
 Doc2Vec is a neat implementation of Word2Vec. The difference here is that we can also assign tags to word vectors. This can be really useful when dealing with a multi-class tagging problem. Doc2Vec will not only give us insights into the relationships between words, but also the relationships between tags. Doc2Vec is a bit of overkill for a binary classification problem that we are exploring but let’s see how it does.
 
-**Setup**
-
-I am using gensim for Doc2Vec implementation. Please install using
-
-https://radimrehurek.com/gensim/install.html
-
-I would recommend python 3.x but it works with python2.x as well
+### Steps
 
 **a.	Preprocessing**
 

@@ -1,5 +1,7 @@
 from sklearn.cluster import KMeans
-
+import logging
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 def kmeans(num_clusters, dataSet):
     # n_clusters: number of centroids
     # n_jobs: number of jobs running in parallel

@@ -17,32 +17,42 @@ num_workers = 4  # Number of threads to run in parallel
 context = 10  # Context window size
 downsampling = 1e-3  # Downsample setting for frequent words
 
-# needed for python 3.x
+'''
+Needed for python 3.x, before gensim 0.13.1
+
 def myhash(obj):
     return hash(obj) % (2 ** 32)    
-
-#bagOfsentences = [['first', 'sentence'], ['second', 'sentence']]    
-print("Training model...")
+    
+prior to gensim 0.13, the model declaration would be
 
 model = word2vec.Word2Vec(bagOfsentences, workers=num_workers,
                           size=num_features, min_count=min_word_count,
                           window=context, sample=downsampling,hashfxn=myhash)
-						  
-'''
+
 python 2.x declaration would be 
 
 model = word2vec.Word2Vec(bagOfsentences, workers=num_workers,
                           size=num_features, min_count=min_word_count,
                           window=context, sample=downsampling
-						  )
+                          )
 '''
 
-# If you don't plan to train the model any further, calling
-# init_sims will make the model much more memory-efficient
-model.init_sims(replace=True)
+print("Training model...")
+
+model = word2vec.Word2Vec(bagOfsentences, workers=num_workers,
+                          size=num_features, min_count=min_word_count,
+                          window=context, sample=downsampling)
+						  
+
+"""
+If you don't plan to train the model any further, calling
+init_sims will make the model much more memory-efficient
+If `replace` is set, forget the original vectors and only keep the normalized
+ones = saves lots of memory!
+"""
+model.init_sims(replace=False)
     
 # save the model for later use
 # for loading, call Word2Vec.load()
 
-model.save(open("../../classifier/Word2VectforNLPTraining","wb"))
-    
+model.save("../../classifier/Word2VectforNLPTraining")

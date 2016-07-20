@@ -1,16 +1,5 @@
 from gensim.models import word2vec
 
-# Needed for python 3.x
-def myhash(obj):
-    return hash(obj) % (2 ** 32)    
-
-model = word2vec.Word2Vec(hashfxn=myhash)
-
-'''
-for python 2.x, this would be 
-
-model = word2vec.Word2Vec()
-'''
 model = word2vec.Word2Vec.load("../../classifier/Word2VectforNLPTraining")
 
 print(type(model.syn0))

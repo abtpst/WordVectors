@@ -71,3 +71,20 @@ def review_to_words(rawReview, removeStopwords=False, removeNumbers=False, remov
     # return " ".join(words)
                
     return words
+
+def clean_data(data):
+    """
+    clean the training and test data and return a list of words
+    :param data:
+    :return:
+    """
+    # raise an error if there is no review column
+    try:
+        reviewsSet = data["review"]
+    except ValueError:
+        print('No "review" column!')
+        raise
+
+    cleaned_data = [review_to_words(review, True, True, False) for review in reviewsSet]
+    
+    return cleaned_data

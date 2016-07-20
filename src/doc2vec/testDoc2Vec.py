@@ -4,12 +4,6 @@ Created on Sep 23, 2015
 @author: atomar
 '''
 from gensim.models import doc2vec
-
-def myhash(obj):
-    return hash(obj) % (2 ** 32)    
-
-model = doc2vec.Doc2Vec(hashfxn=myhash)
-
 #Load the model we trained earlier
 model = doc2vec.Doc2Vec.load("../../classifier/Doc2VecTaggedDocs")
 

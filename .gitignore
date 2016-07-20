@@ -1,7 +1,8 @@
-.*pyc
+*.pyc
 .project
 .pydevproject
 classifier/*
 submits/*
 __pycache__
 data/*
+*.csv

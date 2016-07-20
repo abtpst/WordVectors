@@ -1,15 +1,25 @@
 import pickle
 import time
-from gensim.models import Word2Vec
+from gensim.models import word2vec
 import numpy as np
 import pandas as pd
 import utilities.preProc as preProc
-import utilities.classifierFuncs as cfun
+from utilities import classifierFuncs as cfun
 
 def main():
     
-    modelName = "../../classifier/Word2VectforNLPTraining"
-    model = Word2Vec.load(open(modelName,"rb"))
+    # Needed for python 3.x
+    def myhash(obj):
+        return hash(obj) % (2 ** 32)    
+    
+    #model = word2vec.Word2Vec(hashfxn=myhash)
+    
+    '''
+    for python 2.x, this would be 
+    
+    model = word2vec.Word2Vec()
+    '''
+    model = word2vec.Word2Vec.load("../../classifier/Word2VectforNLPTraining")
 
     # model.init_sims(replace=True)
 
@@ -25,7 +35,7 @@ def main():
 
     print("Time taken for clustering: {} seconds".format(endTime - startTime))
 
-    clusterf = open("../../classifier/doc2vec/clusterIndex.pickle","wb") 
+    clusterf = open("../../classifier/clusterIndexWord2Vec.pickle","wb") 
     
     pickle.dump(clusterIndex,clusterf)
     

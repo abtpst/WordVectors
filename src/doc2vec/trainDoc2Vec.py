@@ -4,7 +4,6 @@ Created on Sep 22, 2015
 @author: atomar
 '''
 from gensim.models import doc2vec
-import json
 import pickle
 import logging
 from random import shuffle
@@ -38,20 +37,28 @@ num_workers = 4  # Number of threads to run in parallel
 # otherwise the model is trained automatically
 # https://www.codatlas.com/github.com/piskvorky/gensim/develop/gensim/models/doc2vec.py?line=192
 
+'''
+Needed for python 3.x, before gensim 0.13.1
 
 def myhash(obj):
-       return hash(obj) % (2 ** 32)
-   
-model = doc2vec.Doc2Vec(size=num_features,
-                        window=context, min_count=min_word_count,
-                        sample=downsampling, workers=4,hashfxn=myhash)
+    return hash(obj) % (2 ** 32)    
+    
+prior to gensim 0.13, the model declaration would be
 
-'''
+model = word2vec.Word2Vec(bagOfsentences, workers=num_workers,
+                          size=num_features, min_count=min_word_count,
+                          window=context, sample=downsampling,hashfxn=myhash)
+
+python 2.x declaration would be 
+
 python 2.x declaration would be 
 model = doc2vec.Doc2Vec(size=num_features,
                         window=context, min_count=min_word_count,
                         sample=downsampling, workers=num_workers)
 '''
+model = doc2vec.Doc2Vec(size=num_features,
+                        window=context, min_count=min_word_count,
+                        sample=downsampling, workers=4)
 
 #Build the model vocabulary (term document matrix)
 model.build_vocab(bagTaggedDocs)

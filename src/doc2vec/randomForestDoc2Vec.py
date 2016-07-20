@@ -18,13 +18,13 @@ def main():
     model = doc2vec.Doc2Vec(hashfxn=myhash)
 
     #Load the trained model
-    model = doc2vec.Doc2Vec.load("../../classifier/Doc2VectforNLPTraining")
-
+    model = doc2vec.Doc2Vec.load("../../classifier/Doc2VecTaggedDocs")
+    
     word_vectors = model.syn0
       
     num_clusters = int(word_vectors.shape[0] / 5)
     # print("number of clusters: {}".format(num_clusters))
-   
+    
     print("Clustering...")
     startTime = time.time()
     cluster_index = cfun.kmeans(num_clusters, word_vectors)
@@ -32,7 +32,7 @@ def main():
 
     print("Time taken for clustering: {} minutes".format((endTime - startTime)/60))
     
-    clusterf = open("../../classifier/doc2vec/clusterIndex.pickle","wb") 
+    clusterf = open("../../classifier/clusterIndex.pickle","wb") 
     
     #Save clusters
     pickle.dump(cluster_index,clusterf)
