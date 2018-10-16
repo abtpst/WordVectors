@@ -92,7 +92,7 @@ Pretty neat! It is important to note that we did not provide any semantic inform
 
 `print(model.most_similar(":-)"))`
 
-`[(':d', 0.5370886325836182), ('ps:', 0.5244550108909607), ('nickelodeon', 0.5076525807380676), ('lotr', 0.5034156441688538), ('haha', 0.500064492225647), ('myself)', 0.49700990319252014), ('say:', 0.4925299286842346), ("(you'll", 0.4870578646659851), ('boobies', 0.48568087816238403), ('advice:', 0.4825150966644287)]`
+`[(':d', 0.5370886325836182), ('ps:', 0.5244550108909607), ('nickelodeon', 0.5076525807380676), ('lotr', 0.5034156441688538), ('haha', 0.500064492225647), ('myself)', 0.49700990319252014), ('say:', 0.4925299286842346), ("(you'll", 0.4870578646659851), ('advice:', 0.4825150966644287)]`
 
 Looks like we were right! We can get useful information from smileys. Note that not all smileys would be featured in the model. This will depend on the data. The more diverse data set we have, the better our model will be.
 
