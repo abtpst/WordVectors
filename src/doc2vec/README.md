@@ -58,7 +58,7 @@ Pretty good. How about
 
 `print(model.most_similar(positive=['woman', 'boy'], negative=['man'], topn=10))`
 
-`[('girl', 0.8016636967658997), ('teenage', 0.6105856895446777), ('brat', 0.6075425744056702), ('blonde', 0.5955377817153931), ('lady', 0.5924547910690308), ('orphan', 0.588573157787323), ('rich', 0.5845152735710144), ("girl's", 0.5842843651771545), ('prostitute', 0.5723811984062195), ('loretta', 0.5688214898109436)]`
+`[('girl', 0.8016636967658997), ('teenage', 0.6105856895446777), ('brat', 0.6075425744056702), ('blonde', 0.5955377817153931), ('lady', 0.5924547910690308), ('orphan', 0.588573157787323), ('rich', 0.5845152735710144), ("girl's", 0.5842843651771545), ('loretta', 0.5688214898109436)]`
 
 Now this is not exactly what Word2Vec gave us but still, the terms make sense. Note that the score for ‘girl’ in this case is 0.80 while for Word2Vec it was 0.57. A score of 1.00 would mean a perfect match so effectively; Doc2Vec has been able to assign better scores with fewer vectors for this data set. Now let’s see if we can get any insights form the tags
 
